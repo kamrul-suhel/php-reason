@@ -22,8 +22,9 @@ class Products
     /**
      * Defining default product
      * I believe in real project, it will come from database
+     * @return \SplDoublyLinkedList
      */
-    public function createDefaultProduct(){
+    private function createDefaultProduct(){
         $product = new Product('Item 1', 'A', 50.00, 3,130);
         $this->products->push($product);
 
@@ -40,5 +41,13 @@ class Products
         $this->products->rewind();
 
         return $this->products;
+    }
+
+    /**
+     * @return \SplDoublyLinkedList
+     */
+    public static function getAllProduct(){
+        $product = new self();
+        return $product->createDefaultProduct();
     }
 }
