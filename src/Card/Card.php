@@ -59,8 +59,20 @@ class Card
             // Get first product form group of product, so we can check is product has special offer
             $product = $this->getCurrentProduct($sku);
 
+            // Count how many product in current group
+            $totalProduct = count($products);
+
             // Check product has special price
             if($product->isOnOffer()){
+                // If has special price first check how many product in current group
+                // If it is more then special unit then do
+                if( $totalProduct >= $product->getDiscountUnit()){
+
+                }else{
+                    foreach($products as $product){
+                        $total += $product->getPrice();
+                    }
+                }
 
             }else{
                 foreach($products as $product){

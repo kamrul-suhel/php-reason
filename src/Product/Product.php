@@ -143,7 +143,6 @@ class Product
         if($this->specialPrice > 0 && $this->discountUnit > 0){
             return true;
         }
-
         return false;
     }
 
