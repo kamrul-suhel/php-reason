@@ -139,7 +139,7 @@ class Product
      * Check is product in offer
      * @return bool
      */
-    public function isOffer(){
+    public function isOnOffer(){
         if($this->specialPrice > 0 && $this->discountUnit > 0){
             return true;
         }
