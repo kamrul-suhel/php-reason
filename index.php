@@ -10,21 +10,18 @@ use App\Checkout;
 
 require "./vendor/autoload.php";
 
-$card = new Checkout();
-$card->scan('B');
-$card->scan('A');
-$card->scan('B');
-$card->scan('A');
-$card->scan('A');
-//$card->addProduct('C');
-//$card->addProduct('A');
-//$card->addProduct('C');
-//$card->addProduct('A');
+$checkout = new Checkout();
+//$checkout->scan('A');
+//$checkout->scan('C');
+$checkout->scan('B');
+$checkout->scan('B');
+$checkout->scan('B');
+//$checkout->scan('D');
 
-$card->generateCard();
+$checkout->generateCard();
 
 
 
 echo '<pre>';
-var_dump($card->getTotal());
+var_dump($checkout->getTotal());
 echo '</pre>';
