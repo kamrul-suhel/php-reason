@@ -6,19 +6,25 @@
  * Time: 09:17
  */
 
-use App\Card\Card;
-use App\Product\Product;
+use App\Checkout;
 
 require "./vendor/autoload.php";
 
-$card = new Card();
-$card->addProduct('A');
-$card->addProduct('A');
-$card->addProduct('A');
-$card->addProduct('A');
-$card->addProduct('A');
-$card->addProduct('A');
+$card = new Checkout();
+$card->scan('B');
+$card->scan('A');
+$card->scan('B');
+$card->scan('A');
+$card->scan('A');
+//$card->addProduct('C');
+//$card->addProduct('A');
+//$card->addProduct('C');
+//$card->addProduct('A');
+
+$card->generateCard();
+
+
 
 echo '<pre>';
-var_dump($card->getCard());
+var_dump($card->getTotal());
 echo '</pre>';

@@ -16,7 +16,7 @@ interface CheckoutInterface
     /**
      * Calculates the total price of all items in this checkout
      *
-     * @return int
+     * @return float
      */
-    public function total(): int;
+    public function total(): float;
 }

@@ -15,11 +15,13 @@ use App\Product\Products;
 class Card
 {
     private $currentProducts;
+    private $total;
 
     public function __construct()
     {
         //Initialize card
         $this->currentProducts = [];
+        $this->total = 0.00;
     }
 
     /**
@@ -53,13 +55,19 @@ class Card
         }
     }
 
-
     /**
      * @return float
      */
-    public function getCard()
+    public function getTotal() : float{
+        return $this->total;
+    }
+
+
+    /**
+     * Calculate current basket
+     */
+    public function generateCard()
     {
-        $total = 0.00;
         //Loop into current checkout products
         foreach ($this->currentProducts as $sku => $products) {
             // Get first product form group of product, so we can check is product has special offer
@@ -81,29 +89,26 @@ class Card
                         // Check collection is more then discount unit
                         if (count($collection) === $product->getDiscountUnit()) {
                             // This collection has special price.
-                            $total += $product->getSpecialPrice();
+                            $this->total += $product->getSpecialPrice();
                         } else {
                             // This collection has normal price
-                            $total += $product->getPrice();
+                            $this->total += $product->getPrice();
                         }
                     }
                 } else {
                     // Has special price but they did not buy enough item.
                     foreach ($products as $product) {
-                        $total += $product->getPrice();
+                        $this->total += $product->getPrice();
                     }
                 }
 
             } else {
                 foreach ($products as $product) {
-                    $total += $product->getPrice();
+                    $this->total += $product->getPrice();
                 }
             }
 
         }
-
-        return $total;
     }
-
 
 }
