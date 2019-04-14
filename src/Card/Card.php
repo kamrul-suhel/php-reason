@@ -51,4 +51,27 @@ class Card
         }
     }
 
+
+    public function getCard(){
+        $total = 0;
+        //Loop into current checkout products
+        foreach($this->currentProducts as $sku => $products){
+            // Get first product form group of product, so we can check is product has special offer
+            $product = $this->getCurrentProduct($sku);
+
+            // Check product has special price
+            if($product->isOnOffer()){
+
+            }else{
+                foreach($products as $product){
+                    $total += $product->getPrice();
+                }
+            }
+
+        }
+
+        return $total;
+    }
+
+
 }
